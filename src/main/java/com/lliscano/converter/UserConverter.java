@@ -7,7 +7,7 @@ import com.lliscano.entity.Users;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper {
+public interface UserConverter {
     UserDTO toDto(Users user);
     Users toEntity(UserDTO userDTO);
 }

@@ -1,6 +1,7 @@
-package com.lliscano.microserviciocommand.repository;
+package com.lliscano.repository;
 
-import com.lliscano.microserviciocommand.entity.Users;
+
+import com.lliscano.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

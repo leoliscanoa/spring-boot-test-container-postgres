@@ -1,4 +1,4 @@
-package com.lliscano.commons.exception;
+package com.lliscano.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

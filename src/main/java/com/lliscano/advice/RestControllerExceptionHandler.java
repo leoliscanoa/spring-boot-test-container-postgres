@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 @Slf4j
-public class UsersControllerExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> constraintViolationExceptionHandler(final ConstraintViolationException exception) {
         log.error("ConstraintViolationException", exception);
@@ -36,6 +37,18 @@ public class UsersControllerExceptionHandler extends ResponseEntityExceptionHand
                 ResponseDTO.builder()
                         .message("constraintViolationExceptionHandler::InvalidParameters")
                         .data(errors)
+                        .build(),
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(final MethodArgumentTypeMismatchException exception){
+        log.error("MethodArgumentTypeMismatchException", exception);
+        return new ResponseEntity<>(
+                ResponseDTO.builder()
+                        .message("MethodArgumentTypeMismatchException::InvalidParameters")
+                        .data(exception.getMessage())
                         .build(),
                 HttpStatus.BAD_REQUEST
         );

@@ -1,4 +1,4 @@
-package com.lliscano.commons.dto;
+package com.lliscano.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.lliscano.commons.dto;
+package com.lliscano.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
